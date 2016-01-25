@@ -1,4 +1,4 @@
-# CPT-Extensions
+# CPT Extensions
 CPT Extensions object provides additional enhanced options for WordPress CPT (custom post types) by allowing additional 
 options in the CPT post registration. The following enhanced options will be enabled when registering custom post types:
 
