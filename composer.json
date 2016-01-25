@@ -1,0 +1,20 @@
+{
+  "name": "steveorevo/cpt-extensions",
+  "description": "This object provides additional enhanced options for WordPress CPT (custom post types) by allowing additional options in the CPT post registration.",
+  "license": "GPL",
+  "authors": [
+    {
+      "name": "Stephen J. Carnam",
+      "email": "steve@steveorevo.com",
+      "homepage": "http://steveorevo.com",
+      "role": "developer"
+    }
+  ],
+  "require": {
+    "steveorevo/string": "1.*",
+    "steveorevo/wp-hooks": "1.*"
+  },
+  "autoload": {
+    "psr-4": {"Steveorevo\\": "src/"}
+  }
+}
