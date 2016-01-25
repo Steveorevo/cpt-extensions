@@ -115,7 +115,7 @@ class CPT_Extensions extends WP_Hooks {
 	function get_post_args() {
 		global $wp_post_types;
 		global $post_type;
-		if ( false === isset($post_type) ) return false;
+		if ( false === isset( $post_type ) || NULL === $post_type || "" === $post_type ) return false;
 		$args = $wp_post_types[$post_type];
 		return $args;
 	}
@@ -351,11 +351,13 @@ class CPT_Extensions extends WP_Hooks {
 	 */
 	function get_previous_post_where( $where ) {
 		$args = $this->get_post_args();
-		if ( true === $args->dragndrop_sortable ) {
-			global $post;
-			$current_menu_order = $post->menu_order;
-			$where = "WHERE p.menu_order > '" . $current_menu_order . "' ";
-			$where .= "AND p.post_type = '" . $post->post_type . "' AND p.post_status = 'publish'";
+		if ( false !== $args ) {
+			if ( true === $args->dragndrop_sortable ) {
+				global $post;
+				$current_menu_order = $post->menu_order;
+				$where              = "WHERE p.menu_order > '" . $current_menu_order . "' ";
+				$where .= "AND p.post_type = '" . $post->post_type . "' AND p.post_status = 'publish'";
+			}
 		}
 		return $where;
 	}
@@ -364,8 +366,10 @@ class CPT_Extensions extends WP_Hooks {
 	 */
 	function get_previous_post_sort( $orderby ) {
 		$args = $this->get_post_args();
-		if ( true === $args->dragndrop_sortable ) {
-			$orderby = 'ORDER BY p.menu_order ASC LIMIT 1';
+		if ( false !== $args ) {
+			if ( true === $args->dragndrop_sortable ) {
+				$orderby = 'ORDER BY p.menu_order ASC LIMIT 1';
+			}
 		}
 		return $orderby;
 	}
@@ -374,10 +378,12 @@ class CPT_Extensions extends WP_Hooks {
 	 */
 	function get_next_post_where( $where ) {
 		$args = $this->get_post_args();
-		if ( true === $args->dragndrop_sortable ) {
-			$current_menu_order = $post->menu_order;
-			$where = "WHERE p.menu_order < '" . $current_menu_order . "' ";
-			$where .= "AND p.post_type = '" . $post->post_type . "' AND p.post_status = 'publish'";
+		if ( false !== $args ) {
+			if ( true === $args->dragndrop_sortable ) {
+				$current_menu_order = $post->menu_order;
+				$where              = "WHERE p.menu_order < '" . $current_menu_order . "' ";
+				$where .= "AND p.post_type = '" . $post->post_type . "' AND p.post_status = 'publish'";
+			}
 		}
 		return $where;
 	}
@@ -386,8 +392,10 @@ class CPT_Extensions extends WP_Hooks {
 	 */
 	function get_next_post_sort( $orderby ) {
 		$args = $this->get_post_args();
-		if ( true === $args->dragndrop_sortable ) {
-			$orderby = 'ORDER BY p.menu_order DESC LIMIT 1';
+		if ( false !== $args ) {
+			if ( true === $args->dragndrop_sortable ) {
+				$orderby = 'ORDER BY p.menu_order DESC LIMIT 1';
+			}
 		}
 		return $orderby;
 	}
