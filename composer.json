@@ -11,7 +11,7 @@
     }
   ],
   "require": {
-    "steveorevo/string": "1.*",
+    "steveorevo/gstring": "1.1.*",
     "steveorevo/wp-hooks": "1.*"
   },
   "autoload": {

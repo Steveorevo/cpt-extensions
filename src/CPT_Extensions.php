@@ -159,7 +159,7 @@ class CPT_Extensions extends WP_Hooks {
 		$css = '';
 		foreach ( $wp_post_types as $post_type=>$args ) {
 			if ( strpos( $args->menu_icon_font, '\e' ) !== false ) {
-				$menu = new String( $args->menu_icon_font );
+				$menu = new GString( $args->menu_icon_font );
 				$font = (string) $menu->getLeftMost( ' ' );
 				$char = (string) $menu->delLeftMost( ' ' );
 				$css .= "a.menu-icon-" . $post_type;
